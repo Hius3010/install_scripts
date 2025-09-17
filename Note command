@@ -1,2 +1,5 @@
 Auto completion cho các CLI: 
 velero completion bash | sudo tee /etc/bash_completion.d/velero > /dev/null
+
+Xóa ns treo ở Termination:
+kubectl get ns velero -o json | jq '.spec.finalizers = []' | kubectl replace --raw "/api/v1/namespaces/velero/finalize" -f -
