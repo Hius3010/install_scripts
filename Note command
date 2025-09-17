@@ -1,0 +1,2 @@
+Auto completion cho các CLI: 
+velero completion bash | sudo tee /etc/bash_completion.d/velero > /dev/null
