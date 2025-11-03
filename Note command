@@ -3,3 +3,7 @@ velero completion bash | sudo tee /etc/bash_completion.d/velero > /dev/null
 
 Xóa ns treo ở Termination:
 kubectl get ns velero -o json | jq '.spec.finalizers = []' | kubectl replace --raw "/api/v1/namespaces/velero/finalize" -f -
+
+Rescan khi có disk mới
+for host in /sys/class/scsi_host/host*/scan; do echo "- - -" > $host; done
+
