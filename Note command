@@ -7,3 +7,6 @@ kubectl get ns velero -o json | jq '.spec.finalizers = []' | kubectl replace --r
 Rescan khi có disk mới
 for host in /sys/class/scsi_host/host*/scan; do echo "- - -" > $host; done
 
+Set default storage class
+oc patch storageclass <sc-name> -p '{"metadata": {"annotations": {"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
