@@ -1,12 +1,14 @@
-Auto completion cho các CLI: 
+#Auto completion cho các CLI: 
 velero completion bash | sudo tee /etc/bash_completion.d/velero > /dev/null
 
-Xóa ns treo ở Termination:
+#Xóa ns treo ở Termination:
 kubectl get ns velero -o json | jq '.spec.finalizers = []' | kubectl replace --raw "/api/v1/namespaces/velero/finalize" -f -
 
-Rescan khi có disk mới
+#Rescan khi có disk mới
 for host in /sys/class/scsi_host/host*/scan; do echo "- - -" > $host; done
 
-Set default storage class
+#Set default storage class
 oc patch storageclass <sc-name> -p '{"metadata": {"annotations": {"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
+#Fillter by timestamps
+oc get events --sort-by='.lastTimestamp'
