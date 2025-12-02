@@ -12,3 +12,6 @@ oc patch storageclass <sc-name> -p '{"metadata": {"annotations": {"storageclass.
 
 #Fillter by timestamps
 oc get events --sort-by='.lastTimestamp'
+
+#Comment swap trong fstab
+sed -i 's/^[^#]*swap/#&/' /etc/fstab
