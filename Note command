@@ -21,3 +21,6 @@ oc patch storageclass <sc-name> -p '{"metadata": {"annotations": {"storageclass.
 
 - Fillter by timestamps
 oc get events --sort-by='.lastTimestamp'
+
+- Gộp kube-config
+KUBECONFIG=kube-config1:kube-config2 kubectl config view --merge --flatten > merged-config
